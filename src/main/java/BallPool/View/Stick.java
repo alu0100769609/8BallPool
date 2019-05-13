@@ -9,11 +9,14 @@ import java.awt.geom.AffineTransform;
 
 /**
  * Billiards' stick.
+ * It paint itself with a gap beetween its origin and the actual stick and rotates arround it.
  */
 public class Stick {
 	
 	// Stick's initial height
 	private static final int DEFAULT_HEIGHT = 300;
+	// Stick's initial gap
+	private static final int DEFAULT_GAP = 10;
 	// Stick's thickness
 	private static final int THICKNESS = 3;
 	
@@ -21,6 +24,8 @@ public class Stick {
 	private double angle = 0;
 	// Stick's origin and height
 	private int x, y, h;
+	// Stick's gap
+	private int gap;
 	
 	/**
 	 * Default constructor. Do nothing
@@ -33,6 +38,14 @@ public class Stick {
 	public Stick(int x, int y) {
 		setOrigin(x, y);
 		setHeight(DEFAULT_HEIGHT);
+		setGap(DEFAULT_GAP);
+	}
+	
+	/**
+	 * Set stick's gap
+	 */
+	public void setGap(int gap) {
+		this.gap = gap;
 	}
 	
 	/**
@@ -78,7 +91,7 @@ public class Stick {
 		g2.setStroke(new BasicStroke(THICKNESS));
 		g2.translate(x, y);
 		g2.rotate(angle);
-		g2.drawLine(0, 0, 0, h);
+		g2.drawLine(0, gap, 0, h);
 		
 		g2.setStroke(originalStroke);
 		g2.setTransform(originalTransform);
