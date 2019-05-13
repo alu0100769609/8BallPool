@@ -36,4 +36,4 @@ test {
 }
 
 // Define the main class for the application
-mainClassName = 'main.java.BallPool.App'
+mainClassName = 'BallPool.App'
