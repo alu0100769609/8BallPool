@@ -14,7 +14,7 @@ public class Prueba extends JFrame {
 	    Prueba frame = new Prueba();
 	    frame.setLocationRelativeTo(null); // Center the frame
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setSize(1000, 1000);
+	    frame.setSize(300, 300);
 	    frame.setVisible(true);
 	  }
 

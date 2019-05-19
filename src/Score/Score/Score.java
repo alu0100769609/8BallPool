@@ -12,7 +12,6 @@ public class Score<T> {
 
 	//Stripes = bolas rayadas
 	//Solid = bolas lisas
-	private int quantity;
 	private ArrayList<T> balls;
 	
 	/**
@@ -26,18 +25,26 @@ public class Score<T> {
 	 * Returns how many balls has been scored
 	 * @return
 	 */
-	public int getQuantity() {
-		return quantity;
+	public int size() {
+		return balls.size();
 	}
 	
 	/**
-	 * Return the arrays of balls that have been scored
+	 * Return the array of balls that have been scored
 	 * @return
 	 */
 	public ArrayList<T> getScoredBalls(){
 		return balls;
 	}
 	
+	/**
+	 * Returns de ball in the position pos
+	 * @param pos
+	 * @return
+	 */
+	public T getBall(int pos) {
+		return balls.get(pos);
+	}
 	/**
 	 * Adds a scored ball
 	 * @param ball
@@ -58,6 +65,7 @@ public class Score<T> {
 	 * @return
 	 */
 	public T getStripes() {
+		//TODO
 		return balls.get(0);
 	}
 	
@@ -66,6 +74,7 @@ public class Score<T> {
 	 * @return
 	 */
 	public T getSolid() {
+		//TODO
 		return balls.get(0);
 	}
 	
