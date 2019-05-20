@@ -44,12 +44,12 @@ public class Board {
 	}
 	
 	public void calcHoles() {
-		holes[0] = new Point(posX + 0 , posY + 0 - (int)(holeRadio_ / 2));
-		holes[1] = new Point(posX + width_/2, posY + 0 - (int)(holeRadio_ / 2));
-		holes[2] = new Point(posX + width_, posY + 0 - (int)(holeRadio_ / 2));
-		holes[3] = new Point(posX + 0, posY + height_ - (int)(holeRadio_ / 2));
-		holes[4] = new Point(posX + width_/2, posY + height_ - (int)(holeRadio_ / 2));
-		holes[5] = new Point(posX + width_, posY + height_ - (int)(holeRadio_ / 2));
+		holes[0] = new Point(posX + 0 - (int)(holeRadio_ / 2), posY + 0 - (int)(holeRadio_ / 2));
+		holes[1] = new Point(posX + width_/2 - (int)(holeRadio_ / 2), posY + 0 - (int)(holeRadio_ / 2));
+		holes[2] = new Point(posX + width_ - (int)(holeRadio_ / 2), posY + 0 - (int)(holeRadio_ / 2));
+		holes[3] = new Point(posX + 0 - (int)(holeRadio_ / 2), posY + height_ - (int)(holeRadio_ / 2));
+		holes[4] = new Point(posX + width_/2 - (int)(holeRadio_ / 2), posY + height_ - (int)(holeRadio_ / 2));
+		holes[5] = new Point(posX + width_ - (int)(holeRadio_ / 2), posY + height_ - (int)(holeRadio_ / 2));
 	}
 	
 	public double getWidth() {
