@@ -3,8 +3,10 @@ package BallPool.View;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import BallPool.Controller;
+import BallPool.Model;
 
 import BallPool.Ball;
 
@@ -19,17 +21,19 @@ public class View extends JFrame {
   // MVC Components
   private Controller controller_;
   private BoardView board_;
+  private Model model_;
   
 //  TestPanel panel = new TestPanel();
   public View() {
-      this(new Controller());
+      this(new Model(), new Controller());
   }
 
   
 
-  public View(Controller controller) {
+    public View(Model model, Controller controller) {
       controller_ = controller;
       board_ = new BoardView();
+      model_ = model;
     // Set JFrame attributes
       System.out.println("view constructor");
     setTitle(TITLE);
@@ -56,17 +60,23 @@ public class View extends JFrame {
   public Controller getController() {
     return controller_;
   }
+
+  public Rectangle getBoardDimension() {
+      return board_.getVisibleRect();
+    }
   
-  public class TestPanel extends JPanel {
-      Ball testBall = new Ball();
-      
-      protected void paintComponent(Graphics g) {
+    public class TestPanel extends JPanel {
+        private static final long serialVersionUID = 1L;
+    
+        protected void paintComponent(Graphics g) {
           super.paintComponents(g);
-          
+    
           Graphics2D g2d = (Graphics2D) g;
-          
-          testBall.paintComponent(g2d);
-      }
-  }
+    
+          for(Ball ball : model_.getBalls()) {
+            ball.paintComponent(g2d);
+          }
+        }
+    }
 }
 
