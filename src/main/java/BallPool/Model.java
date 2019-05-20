@@ -29,7 +29,7 @@ public class Model {
 
 		ballIcons_ = new ImageIcon[16];
 		int it = 0;
-		dir = Arrays.asList(new File("./src/Score/Score/BolasR").listFiles());
+		dir = Arrays.asList(new File("/home/dav/8BallPool/src/Score/Score/BolasR").listFiles());
 
 		//TODO ORDENAR Y COMO LEER DEL FICHERO CORRECTO, AHORA ESTÁ LEYENDO DEL MISMO LUGAR DONDE ESTÁ COLOCADO ESTE FICHERO
 		Collections.sort(dir); //No ordena

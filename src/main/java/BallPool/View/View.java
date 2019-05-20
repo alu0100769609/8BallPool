@@ -22,13 +22,13 @@ public class View extends JFrame {
   private Controller controller_;
   private BoardView board_;
   private Model model_;
-  
+
 //  TestPanel panel = new TestPanel();
   public View() {
       this(new Model(), new Controller());
   }
 
-  
+
 
     public View(Model model, Controller controller) {
       controller_ = controller;
@@ -43,7 +43,7 @@ public class View extends JFrame {
     setResizable(false);
 
     // Add MVC components
-    
+
     add(board_);
 
 //    add(panel);
@@ -51,12 +51,15 @@ public class View extends JFrame {
 
   protected void paintComponent(Graphics g) {
       super.paintComponents(g);
-      
+
       Graphics2D g2d = (Graphics2D) g;
-      
-      board_.paintComponent(g2d);
+
+
+      for(Ball ball : model_.getBalls()) {
+        ball.paintComponent(g2d);
+      }
   }
-  
+
   public Controller getController() {
     return controller_;
   }
@@ -64,15 +67,15 @@ public class View extends JFrame {
   public Rectangle getBoardDimension() {
       return board_.getVisibleRect();
     }
-  
+
     public class TestPanel extends JPanel {
         private static final long serialVersionUID = 1L;
-    
+
         protected void paintComponent(Graphics g) {
           super.paintComponents(g);
-    
+
           Graphics2D g2d = (Graphics2D) g;
-    
+
           for(Ball ball : model_.getBalls()) {
             ball.paintComponent(g2d);
           }

@@ -2,7 +2,7 @@ package BallPool;
 import java.awt.Point;
 
 /**
- * 
+ *
  * @author 8BallPool team
  *
  */
@@ -17,12 +17,12 @@ public class Board {
 	private int posY;
 
 	/**
-	 * 
+	 *
 	 */
 	public Board() {
 	    this(0, 0, 0);
 	}
-	
+
 	public Board(int width, int posX, int posY) {
 		width_ = width;
 		height_ = width_/2;
@@ -33,7 +33,7 @@ public class Board {
 		calcHoles();
 	}
 	public boolean isHole(double x,double y) {
-		if((x>=0 && x<= holeRadio_) 
+		if((x>=0 && x<= holeRadio_)
 				|| (x>=width_/2-holeRadio_ && x<=width_/2+holeRadio_)
 				|| (x>=width_-holeRadio_ && x<=width_)) {
 			if((y>=0 && y<=holeRadio_)
@@ -42,7 +42,7 @@ public class Board {
 		}
 		return false;
 	}
-	
+
 	public void calcHoles() {
 		holes[0] = new Point(posX + 0 , posY + 0 - (int)(holeRadio_ / 2));
 		holes[1] = new Point(posX + width_/2, posY + 0 - (int)(holeRadio_ / 2));
@@ -51,7 +51,7 @@ public class Board {
 		holes[4] = new Point(posX + width_/2, posY + height_ - (int)(holeRadio_ / 2));
 		holes[5] = new Point(posX + width_, posY + height_ - (int)(holeRadio_ / 2));
 	}
-	
+
 	public double getWidth() {
 		return width_;
 	}
