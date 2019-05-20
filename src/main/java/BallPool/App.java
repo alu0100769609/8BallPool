@@ -18,8 +18,11 @@ public class App {
     // Show window
     view.setVisible(true);
 
-    controller.addBall(new Ball(50, 50));
-    controller.addBall(new Ball(150, 150));
+    controller.addBall(50, 50);
+    controller.addBall(150, 150);
+    controller.addBall(250, 50);
+    controller.addBall(350, 200);
+    controller.addBall(490, 210);
 
     controller.startGame();
   }

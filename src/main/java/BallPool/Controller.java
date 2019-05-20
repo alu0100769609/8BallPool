@@ -43,8 +43,8 @@ public class Controller {
     gameTimer_.stop();
   }
 
-  public void addBall(Ball ball) {
-    model_.addBall(ball);
+  public void addBall(int x, int y) {
+    model_.addBall(x, y);
   }
 }
 

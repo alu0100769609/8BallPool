@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 
@@ -35,15 +36,11 @@ public class Ball {
     posY_ = 50;
   }
 
-  public Ball(ImageIcon image) {
-	  posX_ = 50;
-	  posY_ = 50;
-	  ballIm = image;
-  }
-
-  public Ball(int posX, int posY) {
+  public Ball(int posX, int posY, ImageIcon image) {
     posX_ = posX;
     posY_ = posY;
+
+    ballIm = image;
 
     vel_ = (float) rand.nextInt(MAX_VEL) + 1;
 
@@ -74,16 +71,14 @@ public class Ball {
   }
 
   public void paintComponent(Graphics2D g2d) {
+
     g2d.setColor(ballColor);
-    g2d.fillOval(posX_, posY_, 20, 20);
+    // g2d.fillOval(posX_, posY_, 20, 20);
 
 
+    // System.out.println(ballIm.getImage());
+    g2d.drawImage(ballIm.getImage(), posX_, posY_, null);
   }
-
-  /*public void paintComponent(Graphics2D g2d) {
-	    g2d.setColor(ballColor);
-	    g.drawImage(ballIm.getImage(), posX_, posY_, null);
-  }*/
 
   public String toString() {
     return String.format("x: %d. y: %d. v: %f a: %f", posX_, posY_, vel_, angle_);
