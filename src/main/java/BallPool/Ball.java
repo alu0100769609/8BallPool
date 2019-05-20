@@ -5,15 +5,19 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 import java.awt.Color;
 
+import java.util.Random;
+
 public class Ball {
+
+  private static Random rand = new Random();
 
   private int posX_;
   private int posY_;
 
-  private float velX_ = 5;
-  private float velY_ = 5;
+  private float velX_ = 5.0f;
+  private float velY_ = 5.0f;
 
-  private float aceleration = -0.4f;
+  private static final int MAX_VEL = 5;
 
   private Color ballColor = Color.RED;
 
@@ -25,32 +29,37 @@ public class Ball {
   public Ball(int posX, int posY) {
     posX_ = posX;
     posY_ = posY;
+
+    setVelX((float)rand.nextInt(MAX_VEL));
+    setVelY((float)rand.nextInt(MAX_VEL));
   }
 
-  public void setVelX(int velX) {
+  public void setVelX(float velX) {
     velX_ = velX;
   }
 
-  public void setVelY(int velY) {
-    velX_ = velY;
+  public void setVelY(float velY) {
+    velY_ = velY;
   }
 
   public void update(Rectangle boardDimensions) {
     posX_ = (int)(posX_ + velX_);
     posY_ = (int)(posY_ + velY_);
 
-    if(velX_ > 0) {
-      velX_ += aceleration;
+    if(posX_ < boardDimensions.getX() || posX_ > boardDimensions.getWidth()) {
+      velX_ *= -1;
     }
 
-    if(velY_ > 0) {
-      velY_ += aceleration;
+    if(posY_ < boardDimensions.getY() || posY_ > boardDimensions.getHeight()) {
+      velY_ *= -1;
     }
   }
 
   public void paintComponent(Graphics2D g2d) {
     g2d.setColor(ballColor);
     g2d.fillOval(posX_, posY_, 20, 20);
+
+
   }
 
   public String toString() {
