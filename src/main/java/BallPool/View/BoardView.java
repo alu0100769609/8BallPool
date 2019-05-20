@@ -13,7 +13,8 @@ public class BoardView extends JPanel{
     private static final int BOARD_WIDTH = 1000;
     private static final int BOARD_X_POS = 100;
     private static final int BOARD_Y_POS = 200;
-    private static final int BOARD_SIZE_LIMIT = 20;
+
+    private static final int BOARD_SIZE_LIMIT = 10;
 
     // ATTRIBUTES
     private Board board;
