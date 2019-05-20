@@ -1,5 +1,5 @@
 package BallPool;
-import java.awt.geom.Point2D;
+import java.awt.Point;
 
 /**
  * 
@@ -9,21 +9,28 @@ import java.awt.geom.Point2D;
 
 public class Board {
 
-	private double width_;
-	private double height_;
+	private int width_;
+	private int height_;
 	private double holeRadio_;
+	private Point holes[];
+	private int posX;
+	private int posY;
+
 	/**
 	 * 
 	 */
 	public Board() {
-		width_ = 0.0;
-		height_ = 0.0;
-		holeRadio_ = 0.0;
+	    this(0, 0, 0);
 	}
-	public Board(double width) {
+	
+	public Board(int width, int posX, int posY) {
 		width_ = width;
 		height_ = width_/2;
-		holeRadio_ = width_/12;
+		holeRadio_ = width_/24;
+		holes = new Point[6];
+		this.posX = posX;
+		this.posY = posY;
+		calcHoles();
 	}
 	public boolean isHole(double x,double y) {
 		if((x>=0 && x<= holeRadio_) 
@@ -35,16 +42,16 @@ public class Board {
 		}
 		return false;
 	}
-	public Point2D.Double[] getHoles() {
-		Point2D.Double[] Holes= new Point2D.Double[6];
-		Holes[0] = new Point2D.Double(0,0);
-		Holes[1] = new Point2D.Double(width_/2,0);
-		Holes[2] = new Point2D.Double(width_,0);
-		Holes[3] = new Point2D.Double(0,height_);
-		Holes[4] = new Point2D.Double(width_/2,height_);
-		Holes[5] = new Point2D.Double(width_,height_);
-		return Holes;
+	
+	public void calcHoles() {
+		holes[0] = new Point(posX + 0 , posY + 0 - (int)(holeRadio_ / 2));
+		holes[1] = new Point(posX + width_/2, posY + 0 - (int)(holeRadio_ / 2));
+		holes[2] = new Point(posX + width_, posY + 0 - (int)(holeRadio_ / 2));
+		holes[3] = new Point(posX + 0, posY + height_ - (int)(holeRadio_ / 2));
+		holes[4] = new Point(posX + width_/2, posY + height_ - (int)(holeRadio_ / 2));
+		holes[5] = new Point(posX + width_, posY + height_ - (int)(holeRadio_ / 2));
 	}
+	
 	public double getWidth() {
 		return width_;
 	}
@@ -54,9 +61,34 @@ public class Board {
 	public double getHoleRadio() {
 		return holeRadio_;
 	}
-	public void resize(double width) {
+	public void resize(int width) {
 		width_ = width;
 		height_ = width_/2;
-		holeRadio_ = width_/12;
+		holeRadio_ = width_/24;
+		calcHoles();
 	}
+
+    public Point[] getHoles() {
+        return holes;
+    }
+
+    public void setHoles(Point[] holes) {
+        this.holes = holes;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
 }
